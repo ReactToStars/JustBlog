@@ -1,0 +1,51 @@
+﻿@model FA.JustBlog.ViewModels.Comments.CommentVM
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Comment Details</h2>
+<dl>
+    <dt>
+        <label asp-for="Name"></label>
+    </dt>
+    <dd>
+        @Model.Name
+    </dd>
+    <dt>
+        <label asp-for="Email"></label>
+    </dt>
+    <dd>
+        @Model.Email
+    </dd>
+    <dt>
+        <label asp-for="CommentHeader"></label>
+    </dt>
+    <dd>
+        @Model.CommentHeader
+    </dd>
+    <dt>
+        <label asp-for="CommentText"></label>
+    </dt>
+    <dd>
+        @Html.Raw(@Model.CommentText)
+    </dd>
+    <dt>
+        <label asp-for="CommentTime"></label>
+    </dt>
+    <dd>
+        @Model.CommentTime
+    </dd>
+    <dt>
+        <label asp-for="PostTitle"></label>
+    </dt>
+    <dd>
+        @Model.PostTitle
+    </dd>
+</dl>
+
+<div class="mb-3">
+    <a asp-area="Admin" asp-controller="Comment" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    <a asp-area="Admin" asp-controller="Comment" asp-action="Edit" asp-route-id="@Model.CommentId" class="btn btn-warning">Edit</a>
+</div>
+

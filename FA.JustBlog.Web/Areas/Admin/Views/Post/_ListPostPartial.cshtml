@@ -1,0 +1,53 @@
+﻿@using FA.JustBlog.ViewModels.Posts
+@model IList<PostIndexVM>
+@{
+    Layout = "_AdminLayout";
+    int stt = 1;
+}
+
+<h1>@ViewBag.Title</h1>
+<table class="table table-striped table-bordered w-100">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Title</th>
+            <th>Short Description</th>
+            <th>ViewCount</th>
+            <th>Rate</th>
+            <th>Published</th>
+            <th>CategoryName</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@stt</td>
+                <td>@item.Title</td>
+                <td>@Html.Raw(@item.ShortDescription)</td>
+                <td>@item.ViewCount</td>
+                <td>@item.Rate</td>
+                <td>
+                    @if(item.Published == true)
+                    {
+                        <input type="checkbox" checked disabled>
+                    }
+                    else
+                    {
+                        <input type="checkbox" disabled>
+                    }
+                </td>
+                <td>@item.CategoryName</td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-area="Admin" asp-controller="Post" asp-action="Edit" asp-route-id="@item.PostId" class="btn btn-warning rounded">Edit</a>
+                        <a asp-area="Admin" asp-controller="Post" asp-action="Delete" asp-route-id="@item.PostId" class="btn btn-danger rounded">Delete</a>
+                    </div>
+                </td>
+            </tr>
+            stt++;
+        }
+    </tbody>
+</table>
+
+

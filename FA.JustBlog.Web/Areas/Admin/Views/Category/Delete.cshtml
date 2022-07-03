@@ -1,0 +1,30 @@
+﻿@model FA.JustBlog.ViewModels.Categories.CategoryVM
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete Category</h2>
+<form asp-area="Admin" asp-controller="Category" asp-action="Delete" method="post">
+    <input asp-for="CategoryId" hidden />
+    <div class="mb-3">
+        <label asp-for="CategoryName"></label>
+        <input asp-for="CategoryName" class="form-control" disabled/>
+        <span asp-validation-for="CategoryName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="UrlSlug"></label>
+        <input asp-for="UrlSlug" class="form-control" disabled/>
+        <span asp-validation-for="UrlSlug" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" rows="3" disabled></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    </div>
+</form>
+

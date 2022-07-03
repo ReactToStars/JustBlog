@@ -1,0 +1,11 @@
+﻿@{
+    @if(TempData["success"] != null)
+    {
+        <p class="alert-success fs-4">@TempData["success"]</p>
+    }
+    @if(TempData["error"] != null)
+    {
+        <p class="alert-danger fs-4">@TempData["error"]</p>
+    }
+}
+

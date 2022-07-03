@@ -1,0 +1,43 @@
+﻿
+@model FA.JustBlog.ViewModels.Comments.CommentVM
+
+<h2>Update Comment</h2>
+<form asp-area="Admin" asp-controller="Comment" asp-action="Edit" method="post">
+    <input asp-for="CommentId" hidden/>
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CommentHeader"></label>
+        <input asp-for="CommentHeader" class="form-control" />
+        <span asp-validation-for="CommentHeader" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CommentText"></label>
+        <textarea asp-for="CommentText" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="CommentText" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PostId"></label>
+        <select asp-for="PostId" asp-items="@Model.ListPost" class="form-control">
+            <option value="PostId" hidden selected>@Model.PostTitle</option>
+        </select>
+        <span asp-validation-for="PostId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-success">Update</button>
+        <a asp-area="Admin" asp-controller="Comment" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    </div>
+</form>
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/textArea.js"></script>
+}

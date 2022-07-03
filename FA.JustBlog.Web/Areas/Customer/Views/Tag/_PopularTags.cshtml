@@ -1,0 +1,9 @@
+﻿@using FA.JustBlog.ViewModels.Tags
+@model IList<TagVM>
+<div class="border p-3">
+    @foreach (var item in Model)
+    {
+        <a class="btn btn-info m-2 rounded text-white" asp-area="Customer" asp-controller="Post" 
+        asp-action="GetPostsByTag" asp-route-id="@item.TagId">@item.TagName</a>
+    }
+</div>

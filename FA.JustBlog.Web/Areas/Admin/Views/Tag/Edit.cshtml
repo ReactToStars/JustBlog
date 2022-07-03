@@ -1,0 +1,36 @@
+﻿
+@model FA.JustBlog.ViewModels.Tags.TagVM
+
+<h2>Update Tag</h2>
+<form asp-area="Admin" asp-controller="Tag" asp-action="Edit" method="post">
+    <input asp-for="TagId" hidden />
+    <div class="mb-3">
+        <label asp-for="TagName"></label>
+        <input asp-for="TagName" class="form-control" />
+        <span asp-validation-for="TagName" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="UrlSlug"></label>
+        <input asp-for="UrlSlug" class="form-control" />
+        <span asp-validation-for="UrlSlug" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Count"></label>
+        <input asp-for="Count" class="form-control" />
+        <span asp-validation-for="Count" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-success">Update</button>
+        <a asp-area="Admin" asp-controller="Tag" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    </div>
+</form>
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/textArea.js"></script>
+}

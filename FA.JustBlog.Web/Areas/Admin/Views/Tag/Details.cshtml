@@ -1,0 +1,39 @@
+﻿@model FA.JustBlog.ViewModels.Tags.TagVM
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Tag Details</h2>
+<dl>
+    <dt>
+        <label asp-for="TagName"></label>
+    </dt>
+    <dd>
+        @Model.TagName
+    </dd>
+    <dt>
+        <label asp-for="UrlSlug"></label>
+    </dt>
+    <dd>
+        @Model.UrlSlug
+    </dd>
+    <dt>
+        <label asp-for="Description"></label>
+    </dt>
+    <dd>
+        @Html.Raw(@Model.Description)
+    </dd>
+    <dt>
+        <label asp-for="Count"></label>
+    </dt>
+    <dd>
+        @Model.Count
+    </dd>
+</dl>
+
+<div class="mb-3">
+    <a asp-area="Admin" asp-controller="Tag" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    <a asp-area="Admin" asp-controller="Tag" asp-action="Edit" asp-route-id="@Model.TagId" class="btn btn-warning">Edit</a>
+</div>
+

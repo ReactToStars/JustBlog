@@ -1,0 +1,87 @@
+﻿@model FA.JustBlog.ViewModels.Posts.PostDetailVM
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Post Details</h2>
+<dl>
+    <dt>
+        <label asp-for="Title"></label>
+    </dt>
+    <dd>
+        @Model.Title
+    </dd>
+    <dt>
+        <label asp-for="ShortDescription"></label>
+    </dt>
+    <dd>
+        @Html.Raw(@Model.ShortDescription)
+    </dd>
+    <dt>
+        <label asp-for="PostContent"></label>
+    </dt>
+    <dd>
+        @Html.Raw(@Model.PostContent)
+    </dd>
+    <dt>
+        <label asp-for="UrlSlug"></label>
+    </dt>
+    <dd>
+        @Model.UrlSlug
+    </dd>
+    <dt>
+        <label asp-for="Published"></label>
+    </dt>
+    <dd>
+        @Model.Published
+    </dd>
+    <dt>
+        <label asp-for="PostedOn"></label>
+    </dt>
+    <dd>
+        @Model.PostedOn
+    </dd>
+    <dt>
+        <label asp-for="Modified"></label>
+    </dt>
+    <dd>
+        @Model.Modified
+    </dd>
+    <dt>
+        <label asp-for="ViewCount"></label>
+    </dt>
+    <dd>
+        @Model.ViewCount
+    </dd>
+    <dt>
+        <label asp-for="RateCount"></label>
+    </dt>
+    <dd>
+        @Model.RateCount
+    </dd>
+    <dt>
+        <label asp-for="TotalRate"></label>
+    </dt>
+    <dd>
+        @Model.TotalRate
+    </dd>
+    <dt>
+        <label asp-for="Rate"></label>
+    </dt>
+    <dd>
+        @Model.Rate
+    </dd>
+    <dt>
+        <label asp-for="CategoryName"></label>
+    </dt>
+    <dd>
+        @Model.CategoryName
+    </dd>
+</dl>
+
+<div class="mb-3">
+    <a asp-area="Admin" asp-controller="Post" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    <a asp-area="Admin" asp-controller="Post" asp-action="Edit" asp-route-id="@Model.PostId" class="btn btn-warning">Edit</a>
+</div>
+

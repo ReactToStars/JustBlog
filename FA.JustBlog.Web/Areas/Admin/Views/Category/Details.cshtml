@@ -1,0 +1,33 @@
+﻿@model FA.JustBlog.ViewModels.Categories.CategoryVM
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Category Details</h2>
+<dl>
+    <dt>
+        <label asp-for="CategoryName"></label>
+    </dt>
+    <dd>
+        @Model.CategoryName
+    </dd>
+    <dt>
+        <label asp-for="UrlSlug"></label>
+    </dt>
+    <dd>
+        @Model.UrlSlug
+    </dd>
+    <dt>
+        <label asp-for="Description"></label>
+    </dt>
+    <dd>
+        @Html.Raw(@Model.Description)
+    </dd>
+</dl>
+
+<div class="mb-3">
+    <a asp-area="Admin" asp-controller="Category" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    <a asp-area="Admin" asp-controller="Category" asp-action="Edit" asp-route-id="@Model.CategoryId" class="btn btn-warning">Edit</a>
+</div>
+

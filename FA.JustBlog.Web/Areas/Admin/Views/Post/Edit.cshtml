@@ -1,0 +1,50 @@
+﻿@model FA.JustBlog.ViewModels.Posts.PostEditVM
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Edit Post</h2>
+<form asp-area="Admin" asp-controller="Post" asp-action="Edit" method="post">
+    <input asp-for="PostId" hidden />
+    <div class="mb-3">
+        <label asp-for="Title"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="UrlSlug"></label>
+        <input asp-for="UrlSlug" class="form-control" />
+        <span asp-validation-for="UrlSlug" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ShortDescription"></label>
+        <textarea asp-for="ShortDescription" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="ShortDescription" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PostContent"></label>
+        <textarea asp-for="PostContent" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="PostContent" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Published"></label>
+        <input asp-for="Published" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="CategoryId"></label>
+        <select asp-for="CategoryId" asp-items="@Model.CategoryList" class="form-control">
+            <option value="@Model.CategoryId" hidden selected>@Model.CategoryName</option>
+        </select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-success">Update</button>
+        <a asp-area="Admin" asp-controller="Post" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    </div>
+</form>
+
+@section scripts{
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/textArea.js"></script>
+}
+

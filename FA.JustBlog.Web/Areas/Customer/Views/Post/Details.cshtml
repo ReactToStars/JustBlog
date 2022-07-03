@@ -1,0 +1,37 @@
+﻿@using FA.JustBlog.ViewModels.Posts
+@using FA.JustBlog.ViewModels.Tags
+@using FA.JustBlog.Service
+@using FA.JustBlog.Service.IServices
+@addTagHelper *, FA.JustBlog.Common
+@inject ITagService _tagService
+@model PostDetailVM
+@{
+    ResponseResult<IList<TagVM>> tags = _tagService.GetTagsByPost(Model.PostId);
+}
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div>
+            <!-- Post preview-->
+            <div class="post-preview">
+                <h2 class="post-title my-0">@Model.Title</h2>
+                @if (Model.Modified == null)
+                {
+                    <p class="post-meta my-0 fs-6">Posted @Model.PostedOn with rate @Model.Rate by @Model.ViewCount view(s)</p>
+                }
+                else
+                {
+                    <p class="post-meta my-0 fs-6">Modified @Model.Modified with rate @Model.Rate by @Model.ViewCount view(s)</p>
+                }
+                <div>
+                    Category <a class="text-info" asp-area="Customer" asp-controller="Post" asp-action="GetPostsByCategory" asp-route-id="@Model.CategoryId">@Model.CategoryName</a>
+                </div>
+                <div>
+                    Tag:<tag-link tags="@tags.Data.ToList()"></tag-link>
+                </div>
+                <p class="text-black">
+                    @Html.Raw(@Model.PostContent)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

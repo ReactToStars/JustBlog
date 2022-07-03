@@ -1,0 +1,35 @@
+﻿@model FA.JustBlog.ViewModels.Comments.CommentVM
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete Comment</h2>
+<form asp-area="Admin" asp-controller="Comment" asp-action="Delete" method="post">
+    <input asp-for="CommentId" hidden />
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" disabled/>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Email"></label>
+        <input asp-for="Email" class="form-control" disabled/>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CommentHeader"></label>
+        <input asp-for="CommentHeader" class="form-control" disabled/>
+    </div>
+    <div class="mb-3">
+        <label asp-for="CommentText"></label>
+        <textarea asp-for="CommentText" class="form-control" rows="3" disabled></textarea>
+    </div>
+    <div class="mb-3">
+        <label asp-for="PostId"></label>
+        <input asp-for="PostTitle" class="form-control" disabled/>
+    </div>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-danger">Delete</button>
+        <a asp-area="Admin" asp-controller="Comment" asp-action="Index" class="btn btn-secondary">Back To List</a>
+    </div>
+</form>
+

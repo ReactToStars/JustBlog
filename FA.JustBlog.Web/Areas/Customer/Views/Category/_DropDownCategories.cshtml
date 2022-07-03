@@ -1,0 +1,16 @@
+﻿@using FA.JustBlog.ViewModels.Categories
+@model IList<CategoryVM>
+
+<div class="dropdown fix-dropdown">
+    <button class="btn btn-secondary dropdown-toggle fix-dropdown" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        Category
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+        @foreach (var item in Model)
+        {
+            <li>
+                <a class="nav-link" asp-area="Customer" asp-controller="Post" asp-action="GetPostsByCategory" asp-route-id="@item.CategoryId">@item.CategoryName</a>
+            </li>
+        }
+    </ul>
+</div>

@@ -1,0 +1,53 @@
+﻿@using FA.JustBlog.Service.IServices
+@using FA.JustBlog.ViewModels.Posts
+@using FA.JustBlog.ViewModels.Tags
+@using FA.JustBlog.Service
+@addTagHelper *, FA.JustBlog.Common
+@model IList<PostIndexVM>
+@inject ITagService _tagService
+@{
+    Layout = "_Layout";
+}
+<h1>@ViewBag.Title</h1>
+<hr />
+<!-- Main Content-->
+<div class="container px-4 px-lg-5">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+        <div>
+            @foreach (var item in Model)
+            {
+                ResponseResult<IList<TagVM>> tags = _tagService.GetTagsByPost(@item.PostId);
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="/Customer/Post/Details?year=@item.PostedOn.Year&month=@item.PostedOn.Month&title=@item.UrlSlug">
+                        <h2 class="post-title">@item.Title</h2>
+                    </a>
+                    @*@if (item.Modified == null)
+                    {
+                        <p class="fs-6 my-0">Posted @item.PostedOn with rate @item.Rate by @item.ViewCount view(s)</p>
+                    }
+                    else
+                    {
+                        <p class="fs-6 my-0">Modified @item.Modified with rate @item.Rate by @item.ViewCount view(s)</p>
+                    }*@
+                    <time-helper post-index-vm="@item"></time-helper>
+                    <div>
+                        Category <a class="text-info" asp-area="Customer" asp-controller="Post" asp-action="GetPostsByCategory" asp-route-id="@item.CategoryId">@item.CategoryName</a>
+                    </div>
+                    <div>
+                        Tag:<tag-link tags="@tags.Data.ToList()"></tag-link>
+                    </div>
+                    <p class="text-black">
+                        @Html.Raw(@item.ShortDescription)
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+            }
+            <!-- Pager-->
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+        </div>
+    </div>
+</div>
+
+
